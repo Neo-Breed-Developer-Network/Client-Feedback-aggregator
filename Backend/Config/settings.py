@@ -61,8 +61,28 @@ DATABASES = {
 
 # Other settings...
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'debug.log',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
+
 # Django Rest Framework settings (if applicable)
 REST_FRAMEWORK = {
+
     # Configuration options for Django Rest Framework
     # Authentication and Permissions
     'DEFAULT_PERMISSION_CLASSES': [
